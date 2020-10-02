@@ -23,7 +23,6 @@ def mergecontent(vpath,apath,outpath):
         ainput = ffmpeg.input(apath)
         (
                 ffmpeg
-		.input(vinput)
                 .concat(vinput, ainput,v=1,a=1)
                 .output(outpath)
                 .run()
@@ -35,7 +34,7 @@ def getcontentfiles(path):
                 if filename.endswith(fext):
                        if filename.find("_screenshare.mp4") != -1:
                                 files[0]=os.path.join(videofile,filename)
-                                files[1]=os.path.join(videofile,filename.replace("_screenshare","")+".mp4")
+                                files[1]=os.path.join(videofile,filename.replace("_screenshare",""))
                                 break;
         return files
 if len(sys.argv) == 1:
@@ -61,3 +60,5 @@ if os.path.isfile(fname+fext):
         prefix=str(num)
 
 mergecontent(contfiles[0],contfiles[1],str(fname+str(prefix)+fext))
+
+print("Saved as: "+str(fname+str(prefix)+fext)) 
