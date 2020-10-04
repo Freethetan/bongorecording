@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf8 -*-
-
+# Author:     Viktor Honchar
+# Email:      v_honchar@fanshaweonline.ca
+# Repository: https://github.com/Freethetan/bongorecording
 import ffmpeg
 import sys
 import os
@@ -15,7 +17,7 @@ This script merge the video and the audio from bongo recordings
 USAGE:
         ''')
         print(" "+sys.argv[0]+" dir_path")
-        print(" otput will be "+fname+fext)
+        print(" otput will be stored in current directory as "+fname+fext)
 
 def mergecontent(vpath,apath,outpath):
         print (outpath)
@@ -47,9 +49,9 @@ videofile = sys.argv[1]
 '''Change into subdirectory in case it is a top directory'''
 if os.path.isdir(videofile) and os.path.isdir(os.path.join(videofile,"meetingFiles")):
         videofile = os.path.join(videofile,"meetingFiles");
+
 '''Get bongo files that contain video and audio'''
 contfiles = getcontentfiles(videofile)
-
 
 '''Get next lecture number'''
 prefix="";
